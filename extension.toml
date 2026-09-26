@@ -1,0 +1,12 @@
+id = "antora"
+name = "Antora"
+description = "Antora support for AsciiDoc: xref/include/image completion, go-to-definition, hover and broken-reference diagnostics."
+version = "0.1.0"
+schema_version = 1
+authors = ["Mo"]
+repository = "https://github.com/moritosh/zed-antora"
+
+# Attaches to the "AsciiDoc" language provided by the AsciiDoc extension.
+[language_servers.antora-ls]
+name = "Antora Language Server"
+languages = ["AsciiDoc"]
