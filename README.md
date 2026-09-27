@@ -30,6 +30,12 @@ To see a referenced file in the project panel, jump to it and run `pane: reveal 
 
 **Markdown preview** — an approximate rendering inside Zed. Run the action once and press `cmd-k v` in the `Antora Preview.md` tab it opens; the preview then follows whichever page you work on and updates as you type. xrefs, includes, images and attributes are resolved; admonitions and sidebars show as quotes.
 
+Both previews are code actions, as Zed extensions can't add toolbar buttons. For a toolbar button that opens the code actions menu (in every file type, not just AsciiDoc), add this to your Zed settings:
+
+```json
+"toolbar": { "code_actions": true }
+```
+
 Details are in the [antora-ls README](https://github.com/moritosh/antora-ls#previews).
 
 ## Settings
