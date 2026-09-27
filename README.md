@@ -26,7 +26,7 @@ To see a referenced file in the project panel, jump to it and run `pane: reveal 
 
 ## Previews
 
-**Live site preview** — your real site (UI bundle, xrefs, includes, navigation) in the browser, built from HEAD. Edits appear as you type without a page reload, and the browser scrolls to the block you're editing and follows you to other pages. Needs [Bun](https://bun.sh) or Node, and Antora 3 installed in the docs project.
+**Live site preview** — your real site (UI bundle, xrefs, includes, navigation) in the browser, built from HEAD. The browser opens at once with the build's progress (also in Zed's status bar), and even large sites are ready in seconds. Edits appear as you type without a page reload, and the browser scrolls to the block you're editing and follows you to other pages. Needs [Bun](https://bun.sh) or Node, and Antora 3 installed in the docs project.
 
 **Markdown preview** — an approximate rendering inside Zed. Run the action once and press `cmd-k v` in the `Antora Preview.md` tab it opens; the preview then follows whichever page you work on and updates as you type. xrefs, includes, images and attributes are resolved; admonitions and sidebars show as quotes.
 
