@@ -1,7 +1,7 @@
 id = "antora"
 name = "Antora"
 description = "Antora support for AsciiDoc: xref/include/image completion, go-to-definition, hover and broken-reference diagnostics."
-version = "0.2.0"
+version = "0.2.1"
 schema_version = 1
 authors = ["Mo"]
 repository = "https://github.com/moritosh/zed-antora"
