@@ -6,6 +6,54 @@ The extension and antora-ls are versioned independently. Unless a binary is set 
 
 It layers on top of Zed's **AsciiDoc** extension (syntax highlighting), so install that first.
 
+## Install
+
+The extension isn't in Zed's extension registry yet, so you install it as a *dev extension*: Zed builds it from a clone of this repository, which needs Rust. The extension then downloads antora-ls by itself.
+
+For the live preview, the docs project also needs Antora 3 installed (`npm i -D antora`, or the same with pnpm, Yarn or Bun) and your computer needs Bun or Node; completion, navigation and diagnostics work without them.
+
+### macOS
+
+1. Install [Zed](https://zed.dev/download) and the Xcode command line tools (`xcode-select --install`), which Rust uses to build.
+2. Install Rust and the WebAssembly target that Zed extensions are built for:
+   ```sh
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   rustup target add wasm32-wasip2
+   ```
+3. Clone the extension: `git clone https://github.com/moritosh/antora-zed`.
+4. In Zed, open the extensions page (`cmd-shift-x`), search for **AsciiDoc** and install it.
+5. Open the command palette (`cmd-shift-p`), run `zed: install dev extension` and pick the `antora-zed` folder.
+6. Open your docs folder (the one with `antora.yml` or the playbook) and a page. The first time, Zed downloads antora-ls; completion, hover and diagnostics start when it's running.
+7. For the live preview, install [Bun](https://bun.sh) (`curl -fsSL https://bun.sh/install | bash`) or Node (`brew install node`), then press `cmd-.` on a page and choose **Antora: Open live site preview**.
+
+### Windows
+
+1. Install [Zed](https://zed.dev/download) and [Git](https://git-scm.com) (`winget install Git.Git`).
+2. Install Rust with `rustup-init.exe` from [rustup.rs](https://rustup.rs), and accept its offer to install the Visual Studio C++ build tools. Then, in a new terminal:
+   ```powershell
+   rustup target add wasm32-wasip2
+   ```
+3. Clone the extension: `git clone https://github.com/moritosh/antora-zed`.
+4. In Zed, open the extensions page (`ctrl-shift-x`), search for **AsciiDoc** and install it.
+5. Open the command palette (`ctrl-shift-p`), run `zed: install dev extension` and pick the `antora-zed` folder.
+6. Open your docs folder and a page. The first time, Zed downloads antora-ls.
+   On Windows on ARM there's no ARM build of antora-ls, so the download fails. Install the x64 build as described in the [antora-ls README](https://github.com/moritosh/antora-ls#windows); it runs under emulation, and the extension finds it on the `PATH`.
+7. For the live preview, install [Bun](https://bun.sh) (`powershell -c "irm bun.sh/install.ps1 | iex"`) or Node (`winget install OpenJS.NodeJS.LTS`), restart Zed, then press `ctrl-.` on a page and choose **Antora: Open live site preview**.
+
+### Linux
+
+1. Install [Zed](https://zed.dev/download) (`curl -f https://zed.dev/install.sh | sh`), Git, and a C compiler for Rust to build with (`sudo apt install git build-essential` on Debian and Ubuntu, `sudo dnf install git gcc` on Fedora).
+2. Install Rust and the WebAssembly target:
+   ```sh
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   rustup target add wasm32-wasip2
+   ```
+3. Clone the extension: `git clone https://github.com/moritosh/antora-zed`.
+4. In Zed, open the extensions page (`ctrl-shift-x`), search for **AsciiDoc** and install it.
+5. Open the command palette (`ctrl-shift-p`), run `zed: install dev extension` and pick the `antora-zed` folder.
+6. Open your docs folder and a page. The first time, Zed downloads antora-ls. Its Linux builds need glibc 2.39 or later (Ubuntu 24.04, Debian 13, Fedora 40 or newer); on older distributions, build it with `cargo install --git https://github.com/moritosh/antora-ls` and the extension uses that one from the `PATH`.
+7. For the live preview, install [Bun](https://bun.sh) (`curl -fsSL https://bun.sh/install | bash`) or Node (your distribution's `nodejs` package), then press `ctrl-.` on a page and choose **Antora: Open live site preview**.
+
 ## Features
 
 Default macOS keys; on Linux and Windows use `ctrl` for `cmd`.
