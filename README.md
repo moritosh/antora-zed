@@ -46,7 +46,7 @@ The language server is found in this order:
 
 1. `lsp.antora-ls.binary.path` in Zed settings
 2. `antora-ls` on your `PATH` (e.g. `cargo install --path antora-ls`)
-3. The latest [GitHub release](https://github.com/moritosh/antora-ls/releases) for your platform, downloaded automatically — this needs the `antora-ls` repository to be public
+3. The latest [GitHub release](https://github.com/moritosh/antora-ls/releases) for your platform, downloaded automatically
 
 To choose the binary or the JavaScript runtime used by the live preview:
 
@@ -73,7 +73,7 @@ In Zed: install the **AsciiDoc** extension, run `zed: install dev extension`, an
 
 Set `version` in `extension.toml`, `Cargo.toml` and `Cargo.lock`, commit, and push a tag like `v0.2.2`. The `release` workflow checks the tag against both versions, builds the extension, and creates a GitHub release. Zed builds extensions from source, so the release has no assets.
 
-To publish it in Zed's extension registry, add this repository to [`zed-industries/extensions`](https://github.com/zed-industries/extensions) at the tagged commit, and update it there for each release. The extension downloads antora-ls without authentication, so `antora-ls` must be public and have a release first.
+To publish it in Zed's extension registry, add this repository to [`zed-industries/extensions`](https://github.com/zed-industries/extensions) at the tagged commit, and update it there for each release.
 
 ## License
 
