@@ -1,0 +1,25 @@
+# Push a tag like v0.2.1 to publish a GitHub release of the extension. Zed builds extensions from
+# source, so there are no assets: the release marks the commit to submit to zed-industries/extensions.
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the tag against the versions
+        run: |
+          for file in extension.toml Cargo.toml; do
+            version=$(sed -n 's/^version = "\(.*\)"$/\1/p' "$file" | head -1)
+            if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+              echo "::error::tag $GITHUB_REF_NAME doesn't match version $version in $file"
+              exit 1
+            fi
+          done
+      - run: rustup target add wasm32-wasip2
+      - run: cargo build --release --locked --target wasm32-wasip2
+      - uses: softprops/action-gh-release@v2

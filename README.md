@@ -2,6 +2,8 @@
 
 Antora support for [Zed](https://zed.dev): completion, navigation, refactoring, diagnostics and previews for [Antora](https://antora.org) documentation sites. The work is done by the [antora-ls](https://github.com/moritosh/antora-ls) language server; this extension finds or downloads it and attaches it to AsciiDoc files.
 
+The extension and antora-ls are versioned independently. Unless a binary is set in the settings or on your `PATH`, the extension downloads the latest antora-ls release, so language server updates arrive without an extension update (see [Settings](#settings)).
+
 It layers on top of Zed's **AsciiDoc** extension (syntax highlighting), so install that first.
 
 ## Features
@@ -67,9 +69,11 @@ rustup target add wasm32-wasip2
 
 In Zed: install the **AsciiDoc** extension, run `zed: install dev extension`, and pick this folder. Open a folder containing `antora.yml` and edit a page. After changing `antora-ls`, reinstall it and run `editor: restart language server`.
 
-## Publishing
+## Release
 
-Make `antora-ls` public and publish a release, then submit this repo to [`zed-industries/extensions`](https://github.com/zed-industries/extensions).
+Set `version` in `extension.toml`, `Cargo.toml` and `Cargo.lock`, commit, and push a tag like `v0.2.2`. The `release` workflow checks the tag against both versions, builds the extension, and creates a GitHub release. Zed builds extensions from source, so the release has no assets.
+
+To publish it in Zed's extension registry, add this repository to [`zed-industries/extensions`](https://github.com/zed-industries/extensions) at the tagged commit, and update it there for each release. The extension downloads antora-ls without authentication, so `antora-ls` must be public and have a release first.
 
 ## License
 
