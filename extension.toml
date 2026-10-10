@@ -3,7 +3,7 @@ name = "Antora"
 description = "Antora support for AsciiDoc: xref/include/image completion, go-to-definition, hover and broken-reference diagnostics."
 version = "0.2.1"
 schema_version = 1
-authors = ["Mo"]
+authors = ["Mo <mo@moritosh.com>"]
 repository = "https://github.com/moritosh/antora-zed"
 
 # Attaches to the "AsciiDoc" language provided by the AsciiDoc extension.
